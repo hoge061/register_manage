@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    @livewireStyles
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
+@include('components.head')
 <body class="antialiased overflow-x-hidden">
+    @include('components.header')
 
     {{ $slot }}
 
     @livewireScripts
+    <script src="{{ asset('js/script.js') }}"></script>
 </body>

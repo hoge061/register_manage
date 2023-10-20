@@ -5,7 +5,7 @@
     </head>
     <body>
         <header>
-            <a href="http://localhost/hpcreate003/public">Wing</a>
+            <a href="http://localhost/hpcreate003/public">Home</a>
         </header>
         <main>
             @yield('main')

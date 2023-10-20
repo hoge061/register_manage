@@ -71,8 +71,8 @@ class RealValid extends Component
         // Contact::create($validatedData);
         session()->put('posts', $this->posts);
         // session()->put('facepic', $this->facepic);
-        $path = $this->facepic->store('photos');
-        session()->put('path', $path);
+        // $path = $this->facepic->store('photos');
+        // session()->put('path', $path);
         // $this->imgpath = $this->facepic->getRealPath();
         session()->put('imgpath', $this->imgpath);
         // session()->put('requests', $request);

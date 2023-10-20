@@ -21,6 +21,6 @@ class Confirm extends Component
         // $this->requests = session()->get('requests');
     }
     public function back(){
-        return redirect()->route('input');
+        return redirect()->route('real-valid');
     }
 }

@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+html{
+    font-size: 62.5%;
+}
+
+body{
+    color: #333;
+    font-size: 1.6rem;
+}
+
+form{
+    width: 50%;
+    margin:0 auto;
+}

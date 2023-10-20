@@ -33,8 +33,8 @@ class RealValid extends Component
         'posts.pref' => 'required',
         'posts.address1' => 'required',
         'posts.tel' => 'required',
-        'posts.email_confirmation' => 'required|email',
-        'posts.email' => 'required|confirmed',
+        'posts.email_confirmation' => 'required',
+        'posts.email' => 'required|email|confirmed',
         'posts.job' => 'required',
     ];
 
@@ -49,10 +49,10 @@ class RealValid extends Component
         'posts.pref.required' => '都道府県は必須です',
         'posts.address1.required' => '市区町村以降の住所を入力してください',
         'posts.tel.required' => '携帯電話番号は必須です',
-        'posts.email_confirmation.required' => 'メールアドレスは必須です',
-        'posts.email_confirmation.email' => 'メールアドレスの形式が正しくありません',
+        'posts.email.required' => 'メールアドレスは必須です',
+        'posts.email.email' => 'メールアドレスの形式が正しくありません',
         'posts.email.confirmed' => 'メールアドレスが一致しません',
-        'posts.email.required' => '確認のため入力してください',
+        'posts.email_confirmation.required' => '確認のため入力してください',
         'posts.job.required' => '希望職種は必須です',
     ];
 

@@ -86,16 +86,16 @@
         </div>
         
         <span>メールアドレス</span>
-        @error('posts.email_confirmation') <span class="error">{{ $message }}</span> @enderror
+        @error('posts.email') <span class="error">{{ $message }}</span> @enderror
         <div>
-        <input type="text" wire:model="posts.email_confirmation">
+        <input type="text" wire:model="posts.email">
         </div>
         
 
         <span>確認用メールアドレス</span>
-        @error('posts.email') <span class="error">{{ $message }}</span> @enderror
+        @error('posts.email_confirmation') <span class="error">{{ $message }}</span> @enderror
         <div>
-        <input type="text" wire:model="posts.email">
+        <input type="text" wire:model="posts.email_confirmation">
         </div>
         
 

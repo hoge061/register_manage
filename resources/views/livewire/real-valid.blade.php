@@ -1,6 +1,6 @@
 <div>
     {{-- The Master doesn't talk, he acts. --}}
-    <form wire:submit.prevent="saveContact" class="onreg">
+    <form wire:submit.prevent="saveContact" class="onreg" enctype="multipart/form-data">
 
         <span>氏名</span>
         @error('posts.name') <span class="error">{{ $message }}</span>@enderror

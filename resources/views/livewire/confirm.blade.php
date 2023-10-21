@@ -12,7 +12,7 @@
     <div class="text"><h4>郵便番号</h4><span>{{ @$posts['postcode'] }}</span></div>
     <div class="text"><h4>住所</h4><span>{{config('pref.'.@$posts['pref'])}}{{ @$posts['address1'] }}{{ @$posts['address2'] }}</span></div>
     <div class="text"><h4>携帯電話番号</h4><span>{{ @$posts['tel'] }}</span></div>
-    <div class="text">メールアドレス</h4><span>{{ @$posts['email'] }}</span></div>
+    <div class="text"><h4>メールアドレス</h4><span>{{ @$posts['email'] }}</span></div>
     <div class="text"><h4>希望職種</h4><span>{{ @$posts['job'] }}</span></div>
     <div class="text"><h4>希望勤務地</h4><span>
         {{-- @for($i=1; $i<=6; $i++)

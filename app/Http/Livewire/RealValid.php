@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use Error;
 use Livewire\Component;
 use Livewire\Request;
 use Livewire\WithFileUploads;
@@ -11,6 +12,7 @@ class RealValid extends Component
     public $posts;
     public $facepic;
     public $imgpath;
+    public $foo;
     use WithFileUploads;
 
     public function render()
@@ -21,6 +23,7 @@ class RealValid extends Component
 
     public function mount(){
         $this->posts = session()->get('posts');
+        $this->imgpath = session()->get('imgpath');
     }
 
     protected $rules = [
@@ -36,6 +39,7 @@ class RealValid extends Component
         'posts.email_confirmation' => 'required',
         'posts.email' => 'required|email|confirmed',
         'posts.job' => 'required',
+        'facepic' =>'max:1024',
     ];
 
     protected $messages = [
@@ -54,6 +58,7 @@ class RealValid extends Component
         'posts.email.confirmed' => 'メールアドレスが一致しません',
         'posts.email_confirmation.required' => '確認のため入力してください',
         'posts.job.required' => '希望職種は必須です',
+        'facepic.max' =>'ファイルサイズは1MB以内で選択して下さい。',
     ];
 
     public function updated($propertyName)
@@ -71,9 +76,15 @@ class RealValid extends Component
         // Contact::create($validatedData);
         session()->put('posts', $this->posts);
         // session()->put('facepic', $this->facepic);
-        // $path = $this->facepic->store('photos');
+        try{
+            $this->facepic->store('photos');
+            $this->imgpath = $this->facepic->temporaryUrl();
+        }catch(Error $e){
+            // $this->imgpath = null;
+        }
+        
         // session()->put('path', $path);
-        // $this->imgpath = $this->facepic->getRealPath();
+        
         session()->put('imgpath', $this->imgpath);
         // session()->put('requests', $request);
         return redirect()->route('confirm');

@@ -44,7 +44,7 @@ input[type='text'] {
 	padding: 0.3em;
 	transition: 0.3s;
 	letter-spacing: 1px;
-	color: #aaaaaa;
+	/* color: #aaaaaa; */
 	border: 2px solid #c2c2c2;
 	border-radius: 4px;
 }

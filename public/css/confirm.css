@@ -1,0 +1,89 @@
+@charset "utf-8";
+
+.main{
+    color: #818181;
+    width: 50%;
+    margin:10% auto;
+    background-color: #fff;
+    padding: 5%;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: grid;
+}
+.main > h2{
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.css-button-arrow--sky {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    overflow: hidden;
+    border-radius: 5px;
+    border: none;
+    background-color: #3a86ff
+  }
+  .css-button-arrow--sky:hover {
+    border-radius: 5px;
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  .css-button-arrow--sky:hover:after {
+    opacity: 1;
+    right: 10px;
+  }
+  .css-button-arrow--sky:after {
+    content: "\00BB";
+    position: absolute;
+    opacity: 0;
+    font-size: 20px;
+    line-height: 40px;
+    top: 0;
+    right: -20px;
+    transition: 0.4s;
+  }
+
+  .css-button-shadow--green {
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+    border-radius: 5px;
+    border: none;
+    background-color: #80ed99;
+    box-shadow: 0 3px 1px -2px #ccc, 0 2px 2px 0 #ccc, 0 1px 5px 0 #ccc;
+  }
+  .css-button-shadow--green:active {
+    box-shadow: 0 4px 2px -3px #ccc, 0 4px 5px 1px #ccc, 0 2px 7px 1px #ccc;
+  }
+  .btns{
+    margin: 0 auto;
+    margin-top:50px;
+  }
+  .main img{
+    width: 50%;
+  }
+
+  .main .text{
+    margin-bottom: 2%;
+    padding-left: 15%;
+    padding-bottom: 4%;
+    border-bottom: 2px solid rgb(207, 207, 207);
+  }
+
+  .main > div >span{
+    color: black;
+  }

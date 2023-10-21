@@ -103,15 +103,15 @@
         @error('posts.job') <span class="error">{{ $message }}</span> @enderror
         <div>
         <input type="radio" wire:model="posts.job" id="hotel" value="ブライダル及びホテル・レストランホール">
-        <label for="hotel">ブライダル及びホテル・レストランホール</label>
+        <label for="hotel">ブライダル及びホテル・レストランホール</label><br>
         <input type="radio" wire:model="posts.job" id="sale" value="販売">
-        <label for="sale">販売</label>
+        <label for="sale">販売</label><br>
         <input type="radio" wire:model="posts.job" id="companion" value="パーティーコンパニオン">
-        <label for="companion">パーティーコンパニオン</label>
+        <label for="companion">パーティーコンパニオン</label><br>
         <input type="radio" wire:model="posts.job" id="cleaning" value="客室清掃">
-        <label for="cleaning">客室清掃</label>
+        <label for="cleaning">客室清掃</label><br>
         <input type="radio" wire:model="posts.job" id="office" value="事務">
-        <label for="office">事務</label>
+        <label for="office">事務</label><br>
         <input type="radio" wire:model="posts.job" id="other" value="その他">
         <label for="other">その他</label>
         </div>
@@ -121,23 +121,23 @@
         <div>
             <div>
             <p>＜福岡県＞</p>
-            <input type="checkbox" wire:model="posts.place1" id="hakata" value="福岡市博多区">          
+            <input type="checkbox" wire:model="posts.place.1" id="hakata" value="福岡市博多区">          
             <label for="hakata">福岡市博多区</label>
-            <input type="checkbox" wire:model="posts.place2" id="chuo" value="福岡市中央区">
+            <input type="checkbox" wire:model="posts.place.2" id="chuo" value="福岡市中央区">
             <label for="chuo">福岡市中央区</label>
-            <input type="checkbox" wire:model="posts.place3" id="oono" value="大野城市・太宰府市">
+            <input type="checkbox" wire:model="posts.place.3" id="oono" value="大野城市・太宰府市">
             <label for="oono">大野城市・太宰府市</label>
             </div>
             <div>
             <p>＜佐賀県＞</p>
-            <input type="checkbox" wire:model="posts.place4" id="tosu" value="鳥栖市">
+            <input type="checkbox" wire:model="posts.place.4" id="tosu" value="鳥栖市">
             <label for="tosu">鳥栖市</label>
-            <input type="checkbox" wire:model="posts.place5" id="saga" value="佐賀市">
+            <input type="checkbox" wire:model="posts.place.5" id="saga" value="佐賀市">
             <label for="saga">佐賀市</label>
             </div>
             <div>
             <p>＜熊本県＞</p>
-            <input type="checkbox" wire:model="posts.place6" id="kuma" value="熊本市">
+            <input type="checkbox" wire:model="posts.place.6" id="kuma" value="熊本市">
             <label for="kuma">熊本市</label>
             </div>
         </div>
@@ -146,25 +146,27 @@
 
         <span>登録希望内容</span>
         <div>
-        <input type="checkbox" wire:model="posts.reg-request1" id="reg-request-1" value="職業紹介へ求職申し込みを希望" checked>
-        <label for="reg-request-1">職業紹介へ求職申し込みを希望</label>
-        <input type="checkbox" wire:model="posts.reg-request2" id="reg-request-2" value="労働者派遣へ登録を希望" checked>
+        <input type="checkbox" wire:model="posts.request.1" id="reg-request-1" value="職業紹介へ求職申し込みを希望" checked>
+        <label for="reg-request-1">職業紹介へ求職申し込みを希望</label><br>
+        <input type="checkbox" wire:model="posts.request.2" id="reg-request-2" value="労働者派遣へ登録を希望" checked>
         <label for="reg-request-2">労働者派遣へ登録を希望</label>
         </div>
         
         
         <span>顔写真</span>
-        <div>
-            <button type="button" class="btn-file" >ファイルを選択</button>
-            <input type="file" id="file" wire:model="facepic">
-            <p class="file-names"></p>
+        
+        <div x-data="{ files: null }">
+            @error('facepic') <span class="error">{{ $message }}</span><br> @enderror
+            <button type="button" class="btn-file" x-on:click="document.querySelector('#file').click()">ファイルを選択</button>
+            <input type="file" id="file" wire:model="facepic" x-on:change="files = Object.values($event.target.files);">
+            <p class="file-names" x-text="files ? files.map(file => file.name).join(', ') : 'ファイルが選択されていません。'"></p>
         </div>
 
         {{-- <label class="border-2 border-gray-200 p-3 w-full block rounded cursor-pointer my-2" for="customFile" x-data="{ files: null }">
             <input type="file" class="sr-only" id="customFile" x-on:change="files = Object.values($event.target.files)">
             <span x-text="files ? files.map(file => file.name).join(', ') : 'Choose single file...'"></span>
           </label> --}}
-        
+
         {{-- @if ($posts->facepic)
                 @php
                     try {

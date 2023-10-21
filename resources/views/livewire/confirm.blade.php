@@ -1,33 +1,64 @@
-<div>
+@section('css')
+<link rel="stylesheet" href="{{ asset('css/confirm.css') }}">
+@endsection
+
+<div class="main">
+    <h2>以下の内容で送信してよろしいですか？</h2>
     {{-- Stop trying to control. --}}
-    <span>氏名：</span><span>{{ @$posts['name'] }}</span><br>
-    <span>フリガナ：</span><span>{{ @$posts['furi'] }}</span><br>
-    <span>生年月日：</span><span>{{ @$posts['birth_year'] }}年{{ @$posts['birth_month'] }}月{{ @$posts['birth_day'] }}日</span><br>
-    <span>性別：</span><span>{{ @$posts['gender'] }}</span><br>
-    <span>郵便番号：</span><span>{{ @$posts['postcode'] }}</span><br>
-    <span>住所:</span><span>{{config('pref.'.@$posts['pref'])}}{{ @$posts['address1'] }}{{ @$posts['address2'] }}</span><br>
-    <span>携帯電話番号：</span><span>{{ @$posts['tel'] }}</span><br>
-    <span>メールアドレス：</span><span>{{ @$posts['email'] }}</span><br>
-    <span>希望職種：</span><span>{{ @$posts['job'] }}</span><br>
-    <span>希望勤務地：</span><span>
-        @for($i=1; $i<=6; $i++)
-            {{ @$posts['place'.$i] }}
-        @endfor
-    </span><br>
-    <span>登録希望内容：</span><span>{{ @$posts['reg-request1'] }}{{ @$posts['reg-request2'] }}</span><br>
-    <span>顔写真：</span>
+    <div class="text"><h4>氏名</h4><span>{{ @$posts['name'] }}</span></div>
+    <div class="text"><h4>フリガナ</h4><span>{{ @$posts['furi'] }}</span></div>
+    <div class="text"><h4>生年月日</h4><span>{{ @$posts['birth_year'] }}年{{ @$posts['birth_month'] }}月{{ @$posts['birth_day'] }}日</span></div>
+    <div class="text"><h4>性別</h4><span>{{ @$posts['gender'] }}</span></div>
+    <div class="text"><h4>郵便番号</h4><span>{{ @$posts['postcode'] }}</span></div>
+    <div class="text"><h4>住所</h4><span>{{config('pref.'.@$posts['pref'])}}{{ @$posts['address1'] }}{{ @$posts['address2'] }}</span></div>
+    <div class="text"><h4>携帯電話番号</h4><span>{{ @$posts['tel'] }}</span></div>
+    <div class="text">メールアドレス</h4><span>{{ @$posts['email'] }}</span></div>
+    <div class="text"><h4>希望職種</h4><span>{{ @$posts['job'] }}</span></div>
+    <div class="text"><h4>希望勤務地</h4><span>
+        {{-- @for($i=1; $i<=6; $i++)
+            {{ @$posts['place'.$i] }}<br>
+        @endfor --}}
+        @foreach($posts['place'] as $value)
+            @if($value != null)
+            {{$value}}<br>
+            @endif
+        @endforeach
 
-    @php
-        echo asset('storage') .'/'. $imgpath;
-    @endphp
+        {{-- {{@$posts['place']}} --}}
+    </span></div>
 
-    {{-- <img src="{{ $imgpath }}" class="w-auto h-64"> --}}
+    <div class="text"><h4>登録希望内容</h4>
+    <span>
+        @foreach($posts['request'] as $value)
+            @if($value != null)
+            {{$value}}<br>
+            @endif
+        @endforeach
+    </span></div>
+    <div class="text">
+    <h4>顔写真</h4>
+
+    {{-- @php
+        echo $imgpath;
+    @endphp --}}
+    @if($imgpath)
+        <img src="{{ $imgpath }}" class="w-auto h-64">
+    @else
+        <span>ファイル選択なし</span>
+    @endif
+    </div>
 
     {{-- @if($facepic)
     <img src="{{ $facepic }}" alt="Uploaded Image" width="200">
     @endif --}}
-    <br><button
-    wire:click="back">
-    修正
+    <div class="btns">
+    <button
+    wire:click="back" class="css-button-arrow--sky">
+    送信する
     </button>
+    <button
+    wire:click="back" class="css-button-shadow--green">
+    修正する
+    </button>
+    </div>
 </div>

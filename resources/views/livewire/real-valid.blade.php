@@ -2,7 +2,7 @@
     {{-- The Master doesn't talk, he acts. --}}
     <form wire:submit.prevent="saveContact" class="onreg" enctype="multipart/form-data">
 
-        <span>氏名a</span>
+        <span>氏名</span>
         @error('posts.name') <span class="error">{{ $message }}</span>@enderror
         <div>
             <input type="text" wire:model="posts.name"> 
@@ -10,7 +10,7 @@
         
         
 
-        <span>氏名（フリガナ）a</span>
+        <span>氏名（フリガナ）</span>
         @error('posts.furi') <span class="error">{{ $message }}</span> @enderror
         <div>
             <input type="text" wire:model="posts.furi"> 

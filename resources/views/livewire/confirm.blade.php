@@ -39,10 +39,10 @@
     <h4>顔写真</h4>
 
     {{-- @php
-        echo $imgpath;
+        echo $img_tmp;
     @endphp --}}
-    @if($imgpath)
-        <img src="{{ $imgpath }}" class="w-auto h-64">
+    @if($img_tmp)
+        <img src="{{ $img_tmp }}" class="w-auto h-64">
     @else
         <span>ファイル選択なし</span>
     @endif

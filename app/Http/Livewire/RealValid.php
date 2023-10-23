@@ -82,6 +82,7 @@ class RealValid extends Component
             // $this->img_path = storage_path('app\\'.$this->img_path);
             $this->img_tmp = $this->facepic->temporaryUrl();
             // Log::debug('検証1:'.storage_path('app\\'.$this->img_path));
+            Log::debug('検証1:'.$this->img_path);
         }catch(Error $e){
             // $this->imgpath = null;
         }

@@ -53,7 +53,7 @@
     @endif --}}
     <div class="btns">
     <button
-    wire:click="back" class="css-button-arrow--sky">
+    wire:click="submit" class="css-button-arrow--sky">
     送信する
     </button>
     <button

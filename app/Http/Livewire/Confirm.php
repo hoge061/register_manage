@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\RegisterUser;
 use Livewire\Component;
 
 class Confirm extends Component
@@ -24,5 +25,11 @@ class Confirm extends Component
         $this->imgpath = null;
         session()->put('imgpath', $this->imgpath);
         return redirect()->route('real-valid');
+    }
+    public function submit(){
+        RegisterUser::create([
+            "name" => $this->posts['name'],
+        ]);
+        return redirect()->route('complete');
     }
 }

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Livewire\Complete;
 use App\Http\Livewire\Confirm;
 use App\Http\Livewire\RealValid;
 /*
@@ -33,5 +34,6 @@ Route::middleware('auth')->group(function () {
 Route::get('/',[MainController::class,'index']);
 Route::get('/on_register',RealValid::class)->name('real-valid');
 Route::get('/confirm', Confirm::class)->name('confirm');
+Route::get('/complete', Complete::class)->name('complete');
 
 require __DIR__.'/auth.php';

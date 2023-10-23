@@ -10,7 +10,7 @@
         
         
 
-        <span>氏名（フリガナ）</span>
+        <span>氏名（フリガナ）a</span>
         @error('posts.furi') <span class="error">{{ $message }}</span> @enderror
         <div>
             <input type="text" wire:model="posts.furi"> 

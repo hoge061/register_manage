@@ -7,6 +7,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
 
 class RedirectIfAuthenticated
 {
@@ -18,9 +19,10 @@ class RedirectIfAuthenticated
     public function handle(Request $request, Closure $next, string ...$guards): Response
     {
         $guards = empty($guards) ? [null] : $guards;
-
+        // Log::debug('検証:'.$request->input('email'));
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                if($guard == 'admin') return redirect(RouteServiceProvider::ADMIN_HOME); // 追加
                 return redirect(RouteServiceProvider::HOME);
             }
         }

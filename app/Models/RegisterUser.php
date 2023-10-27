@@ -10,12 +10,14 @@ class RegisterUser extends Model
     use HasFactory;
     protected $fillable = [
         'name',
+        'status',
         'furi',
         'birthday',
         'gender',
         'postcode',
         'address',
         'tel',
+        'home_tel',
         'email',
         'jobtype',
         'area_hakata',
@@ -27,5 +29,13 @@ class RegisterUser extends Model
         'registration_job_introduction',
         'registration_worker_dispatch',
         'facepic',
+        'remarks',
+        'admin_remarks',
     ];
+
+    public static $rules = array(
+        'name' => 'required',
+        'furi' => 'required',
+        'email' => 'required',
+    );
 }

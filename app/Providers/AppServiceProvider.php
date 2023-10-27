@@ -19,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // 追記
+        if (request()->is('admin/*')) {
+            config(['session.cookie' => config('session.cookie_admin')]);
+        }
     }
 }

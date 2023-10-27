@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class AdminController extends Controller
 {
@@ -46,6 +47,11 @@ class AdminController extends Controller
 
         }else if($request->has('delete')){
             // Log::debug('削除ボタン押された');
+        }else if($request->has('pdf_ks')){
+            $pdf = Pdf::loadView('pdf.ks');
+            return $pdf->setPaper('A5', 'landscape')->stream('求職票.pdf');
+        }else if($request->has('pdf_es')){
+
         }
         return view('admin.detail',['item' => $item]);
     }

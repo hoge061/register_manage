@@ -173,9 +173,16 @@
                     </div>
 
                     <div class="flex justify-center gap-10 mt-12">
+                        <button type="submit" name="pdf_ks" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">求職票作成</button>
+                        <button type="submit" name="pdf_es" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">エントリーシート作成</button>    
+                    </div>
+
+                    <div class="flex justify-center gap-10 mt-12">
                         <button type="submit" name="update" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">内容を更新する</button>
                         <button type="submit" name="delete" class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">削除する</button>    
                     </div>
+
+
                 </form>
                 </div>
             </div>

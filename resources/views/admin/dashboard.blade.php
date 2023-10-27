@@ -10,9 +10,10 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{-- {{ __("You're logged in!") }} --}}
+                    {{$items->appends(['sort' => $sort])->links() }}
                     <div>
                         <div class="flex justify-left gap-4">
-                            <a href="?sort=name" class="w-1/6 hover:bg-gray-200">名前</a>
+                            <a href="?sort=name" class="w-2/6 hover:bg-gray-200">名前</a>
                             <a href="?sort=created_at" class="w-1/6 hover:bg-gray-200">登録日</a>
                             <a href="?sort=facepic" class="w-1/6 hover:bg-gray-200">画像</a>
                             <a href="?sort=status" class="w-1/6 hover:bg-gray-200">ステータス</a>
@@ -23,11 +24,11 @@
                         @endphp
                             <a href="detail/{{$item->id}}">
                             <div class="flex justify-left gap-4 hover:bg-gray-200 h-12 items-center">
-                                <div class="w-1/6">{{$item->name}}</div>
+                                <div class="w-2/6">{{$item->name}}　({{$item->furi}})</div>
                                 <div class="w-1/6">{{date($date)}}</div>
                                 <div class="w-1/6">
                                     @if($item->facepic)
-                                        画像あり
+                                        写真有り
                                     @endif
                                 </div>
                                 <div class="w-1/6">
@@ -43,7 +44,7 @@
                             </a>
                         @endforeach
                     </div>
-                    {{$items->appends(['sort' => $sort])->links() }}
+                    {{-- {{$items->appends(['sort' => $sort])->links() }} --}}
                 </div>
             </div>
 

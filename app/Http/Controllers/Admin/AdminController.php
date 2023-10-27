@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function dash(Request $request){
         $sort = $request->sort != null? $request->sort : 'created_at';
-        $items = RegisterUser::orderBy($sort,'desc')->paginate(5);
+        $items = RegisterUser::orderBy($sort,'desc')->paginate(20);
         $param = ['items' => $items, 'sort' => $sort];
         return view('admin.dashboard',$param);
     }
@@ -35,7 +35,10 @@ class AdminController extends Controller
             $registeruser = RegisterUser::find($request->id);
             $form = $request->all();
             unset($form['_token']);
-            
+
+            $birthday = $request->birth_year.'-'.$request->birth_month.'-'.$request->birth_day;
+            // Log::debug($birthday);
+            $form['birthday'] = $birthday;
             if(isset($request->facepic)){
                 $path = $request->file('facepic')->store('photos');
                 $form['facepic'] = $path;
@@ -47,6 +50,9 @@ class AdminController extends Controller
 
         }else if($request->has('delete')){
             // Log::debug('削除ボタン押された');
+            RegisterUser::find($request->id)->delete();
+            return redirect(route('admin.dashboard'));
+
         }else if($request->has('pdf_ks')){
             $pdf = Pdf::loadView('pdf.ks');
             return $pdf->setPaper('A5', 'landscape')->stream('求職票.pdf');

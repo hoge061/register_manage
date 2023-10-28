@@ -48,7 +48,7 @@
 
 
         
-        <span class="required">性別</span>
+        <span>性別</span>
         <div>
             <input type="radio" wire:model="posts.gender" id="male" value="男">
             <label for="male">男</label>

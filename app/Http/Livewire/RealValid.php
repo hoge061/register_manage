@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use Error;
+use Illuminate\Support\Facades\Log;
 use Livewire\Component;
 use Livewire\Request;
 use Livewire\WithFileUploads;
@@ -11,8 +12,8 @@ class RealValid extends Component
 {
     public $posts;
     public $facepic;
-    public $imgpath;
-    public $foo;
+    public $img_tmp;
+    public $img_path;
     use WithFileUploads;
 
     public function render()
@@ -22,8 +23,21 @@ class RealValid extends Component
     }
 
     public function mount(){
-        $this->posts = session()->get('posts');
-        $this->imgpath = session()->get('imgpath');
+        // session()->flush();
+
+        if(session()->has('posts')){
+            $this->posts = session()->get('posts');
+        }else{
+            $this->posts = [
+                'request' => [1 => '職業紹介へ求職申し込みを希望',2=>'労働者派遣へ登録を希望'],
+                'gender' => null,
+                'address2' => null,
+                'place' => [],
+            ];
+        }
+        session()->has('img_tmp') ? $this->img_tmp = session()->get('img_tmp') :null;
+        session()->has('img_path') ? $this->img_path = session()->get('img_path') :null;
+
     }
 
     protected $rules = [
@@ -77,15 +91,19 @@ class RealValid extends Component
         session()->put('posts', $this->posts);
         // session()->put('facepic', $this->facepic);
         try{
-            $this->facepic->store('photos');
-            $this->imgpath = $this->facepic->temporaryUrl();
+            $this->img_path = $this->facepic->store('photos');
+            // $this->img_path = storage_path('app\\'.$this->img_path);
+            $this->img_tmp = $this->facepic->temporaryUrl();
+            // Log::debug('検証1:'.storage_path('app\\'.$this->img_path));
+            Log::debug('検証1:'.$this->img_path);
         }catch(Error $e){
             // $this->imgpath = null;
+            Log::debug('画像保存エラー');
         }
         
         // session()->put('path', $path);
-        
-        session()->put('imgpath', $this->imgpath);
+        session()->put('img_tmp', $this->img_tmp);
+        session()->put('img_path', $this->img_path);
         // session()->put('requests', $request);
         return redirect()->route('confirm');
     }

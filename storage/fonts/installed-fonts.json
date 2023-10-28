@@ -1,0 +1,13 @@
+{
+    "ipaexg": {
+        "normal": "C:\\xampp\\htdocs\\hpcreate003\\storage\\fonts\/ipaexg_normal_a22ed00eb78d64545e942927abcb4f7b",
+        "bold": "ipaexg_bold_a22ed00eb78d64545e942927abcb4f7b"
+    },
+    "ipaexm": {
+        "normal": "C:\\xampp\\htdocs\\hpcreate003\\storage\\fonts\/ipaexm_normal_99a79b018a89a31dc0b979e333be1ff0",
+        "bold": "ipaexm_bold_99a79b018a89a31dc0b979e333be1ff0"
+    },
+    "ipaexmb": {
+        "bold": "ipaexmb_bold_99a79b018a89a31dc0b979e333be1ff0"
+    }
+}

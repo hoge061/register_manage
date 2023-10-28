@@ -12,5 +12,7 @@ class MainController extends Controller
     public function on_register(){
         return view('main.on_register');
     }
-
+    public function admin(){
+        return view();
+    }
 }

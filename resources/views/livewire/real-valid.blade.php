@@ -2,7 +2,7 @@
     {{-- The Master doesn't talk, he acts. --}}
     <form wire:submit.prevent="saveContact" class="onreg" enctype="multipart/form-data">
 
-        <span>氏名</span>
+        <span class="required">氏名</span>
         @error('posts.name') <span class="error">{{ $message }}</span>@enderror
         <div>
             <input type="text" wire:model="posts.name"> 
@@ -10,7 +10,7 @@
         
         
 
-        <span>氏名（フリガナ）</span>
+        <span class="required">氏名（フリガナ）</span>
         @error('posts.furi') <span class="error">{{ $message }}</span> @enderror
         <div>
             <input type="text" wire:model="posts.furi"> 
@@ -18,7 +18,7 @@
         
         
 
-        <span>生年月日</span>
+        <span class="required">生年月日</span>
         @error('posts.birth_year') <span class="error">{{ $message }}</span> @enderror
         @error('posts.birth_month') <span class="error">{{ $message }}</span> @enderror
         @error('posts.birth_day') <span class="error">{{ $message }}</span> @enderror
@@ -57,14 +57,14 @@
         </div>
         
 
-        <span>郵便番号</span>
+        <span class="required">郵便番号</span>
         @error('posts.postcode') <span class="error">{{ $message }}</span> @enderror
         <div>
         <input type="text" wire:model="posts.postcode" placeholder="ハイフン(-)なしで入力">
         </div>
         
 
-        <span>住所</span>
+        <span class="required">住所</span>
         @error('posts.pref') <span class="error">{{ $message }}</span> @enderror
         @error('posts.address1') <span class="error">{{ $message }}</span> @enderror
         <div>
@@ -79,27 +79,27 @@
         </div>
         
 
-        <span>携帯電話番号</span>
+        <span class="required">携帯電話番号</span>
         @error('posts.tel') <span class="error">{{ $message }}</span> @enderror
         <div>
         <input type="text" wire:model="posts.tel">
         </div>
         
-        <span>メールアドレス</span>
+        <span class="required">メールアドレス</span>
         @error('posts.email') <span class="error">{{ $message }}</span> @enderror
         <div>
         <input type="text" wire:model="posts.email">
         </div>
         
 
-        <span>確認用メールアドレス</span>
+        <span class="required">確認用メールアドレス</span>
         @error('posts.email_confirmation') <span class="error">{{ $message }}</span> @enderror
         <div>
         <input type="text" wire:model="posts.email_confirmation">
         </div>
         
 
-        <span>希望職種</span>
+        <span class="required">希望職種</span>
         @error('posts.job') <span class="error">{{ $message }}</span> @enderror
         <div>
         <input type="radio" wire:model="posts.job" id="hotel" value="ブライダル及びホテル・レストランホール">
@@ -146,7 +146,7 @@
 
         <span>登録希望内容</span>
         <div>
-        <input type="checkbox" wire:model="posts.request.1" id="reg-request-1" value="職業紹介へ求職申し込みを希望" checked>
+        <input type="checkbox" wire:model="posts.request.1" id="reg-request-1" value="職業紹介へ求職申し込みを希望">
         <label for="reg-request-1">職業紹介へ求職申し込みを希望</label><br>
         <input type="checkbox" wire:model="posts.request.2" id="reg-request-2" value="労働者派遣へ登録を希望" checked>
         <label for="reg-request-2">労働者派遣へ登録を希望</label>

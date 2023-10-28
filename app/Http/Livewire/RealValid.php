@@ -23,8 +23,10 @@ class RealValid extends Component
     }
 
     public function mount(){
-        $this->posts = session()->get('posts');
-        $this->img_tmp = session()->get('img_tmp');
+        session()->has('posts') ? $this->posts = session()->get('posts') :null;
+        session()->has('img_tmp') ? $this->posts = session()->get('img_tmp') :null;
+        session()->has('img_path') ? $this->posts = session()->get('img_path') :null;
+        $this->posts['request'] = [1 => '職業紹介へ求職申し込みを希望',2=>'労働者派遣へ登録を希望'];
     }
 
     protected $rules = [

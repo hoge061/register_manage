@@ -34,7 +34,7 @@ class Confirm extends Component
             "name" => $this->posts['name'],
             "furi" => $this->posts['furi'],
             "birthday" => $this->mergebirtthday(),
-            'gender' => $this->posts['gender'],
+            'gender' =>  array_key_exists('gender',$this->posts) ? $this->posts['gender']:null,
             'postcode' => $this->posts['postcode'],
             "address" => $this->mergeaddress(),
             "tel" => $this->posts['tel'],
@@ -51,6 +51,8 @@ class Confirm extends Component
             'facepic' => $this->img_path,
             // "birthday" => '1996-12-18',
         ]);
+        
+        session()->flush();
         return redirect()->route('complete');
     }
     public function mergebirtthday(){
@@ -66,9 +68,11 @@ class Confirm extends Component
         return $address;
     }
     public function searchstr($str,$propertyName){
-        foreach($this->posts[$propertyName] as $val){
-            if(strcmp($str,$val) == 0){
-                return true;
+        if(isset($this->posts[$propertyName])){
+            foreach($this->posts[$propertyName] as $val){
+                if(strcmp($str,$val) == 0){
+                    return true;
+                }
             }
         }
         return false;

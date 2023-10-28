@@ -29,11 +29,14 @@
 
     <div class="text"><h4>登録希望内容</h4>
     <span>
-        @foreach($posts['request'] as $value)
+        @if(isset($posts['request']))
+            @foreach($posts['request'] as $value)
             @if($value != null)
             {{$value}}<br>
             @endif
-        @endforeach
+            @endforeach        
+        @endif
+
     </span></div>
     <div class="text">
     <h4>顔写真</h4>

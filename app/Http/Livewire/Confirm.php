@@ -34,7 +34,7 @@ class Confirm extends Component
             "name" => $this->posts['name'],
             "furi" => $this->posts['furi'],
             "birthday" => $this->mergebirtthday(),
-            'gender' =>  array_key_exists('gender',$this->posts) ? $this->posts['gender']:null,
+            'gender' =>  $this->posts['gender'],
             'postcode' => $this->posts['postcode'],
             "address" => $this->mergeaddress(),
             "tel" => $this->posts['tel'],
@@ -68,12 +68,10 @@ class Confirm extends Component
         return $address;
     }
     public function searchstr($str,$propertyName){
-        if(isset($this->posts[$propertyName])){
             foreach($this->posts[$propertyName] as $val){
                 if(strcmp($str,$val) == 0){
                     return true;
                 }
-            }
         }
         return false;
     }

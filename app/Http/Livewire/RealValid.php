@@ -23,10 +23,21 @@ class RealValid extends Component
     }
 
     public function mount(){
-        session()->has('posts') ? $this->posts = session()->get('posts') :null;
-        session()->has('img_tmp') ? $this->posts = session()->get('img_tmp') :null;
-        session()->has('img_path') ? $this->posts = session()->get('img_path') :null;
-        $this->posts['request'] = [1 => '職業紹介へ求職申し込みを希望',2=>'労働者派遣へ登録を希望'];
+        // session()->flush();
+
+        if(session()->has('posts')){
+            $this->posts = session()->get('posts');
+        }else{
+            $this->posts = [
+                'request' => [1 => '職業紹介へ求職申し込みを希望',2=>'労働者派遣へ登録を希望'],
+                'gender' => null,
+                'address2' => null,
+                'place' => [],
+            ];
+        }
+        session()->has('img_tmp') ? $this->img_tmp = session()->get('img_tmp') :null;
+        session()->has('img_path') ? $this->img_path = session()->get('img_path') :null;
+
     }
 
     protected $rules = [
@@ -87,6 +98,7 @@ class RealValid extends Component
             Log::debug('検証1:'.$this->img_path);
         }catch(Error $e){
             // $this->imgpath = null;
+            Log::debug('画像保存エラー');
         }
         
         // session()->put('path', $path);
